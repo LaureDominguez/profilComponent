@@ -1,0 +1,5 @@
+/* conflit avec le style "center-page" de ./srv/styles.css, ligne 11 commentée */
+
+.company-card{
+    min-width: 60vw;
+}

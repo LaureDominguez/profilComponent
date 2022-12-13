@@ -1,0 +1,28 @@
+<mat-card class="user-card card">
+  <!-- formulaire -->
+  <!-- [user]="userData" : input user qui contient les données de userData pour la page userForm-->
+  <!-- (formData)="onSubmit($event)" : output formdata qui appelle la fonction onSubmit de userAccount avec les valeurs entrées dans le formulaire userForm -->
+  <!-- [popup]="false"  input popup pour passer la valeur false et afficher du style dynamique -->
+  <app-user-form [user]="userData" [popup]="true"></app-user-form>
+
+  <mat-card-actions class="card-actions">
+    <!-- boutton qui appelle la methode openUserDialog de userAccount quand on clique dessus -->
+    <button mat-raised-button (click)="openUserDialog()" color="primary">Mettre à jour</button>
+  </mat-card-actions>
+
+  <mat-divider></mat-divider>
+
+  <mat-card-header>
+    <mat-card-title>Mot de passe</mat-card-title>
+  </mat-card-header>
+
+  <mat-card-actions class="card-actions">
+    <!-- boutton qui appelle la methode openPasswordDialog de userAccount quand on clique dessus -->
+    <button mat-raised-button (click)="openPasswordDialog()" color="primary" type="submit">Mettre à jour</button>
+  </mat-card-actions>
+</mat-card>
+
+
+<!-- bouton pour revenir sur la landing page -->
+<a routerLink="" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}" mat-raised-button style="margin-top: 2rem;">Retour à la page d'accueil</a>
+<!--  -->

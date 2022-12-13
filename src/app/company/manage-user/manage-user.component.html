@@ -1,0 +1,112 @@
+<mat-divider></mat-divider>
+
+<mat-card-header>
+    <mat-card-title>Utilisateurs</mat-card-title>
+</mat-card-header>
+<div class="loadingbar">
+    <div class=" flex-space-between">
+        <mat-label> {{numberUser}} / {{totalUser}}</mat-label>
+        <button mat-icon-button matTooltip="Gérer les workgroupes" color="primary" aria-label="Gérer les workgroupes">
+            <mat-icon>donut_small</mat-icon>
+          </button>
+    </div>
+    <mat-progress-bar mode="determinate" value="{{displayUser}}"></mat-progress-bar>
+</div>
+
+<div class="mat-elevation-z8">
+    <mat-table [dataSource]="dataSource" matSort (matSortChange)="announceSortChange($event)">
+        <ng-container matColumnDef="first_name">
+            <mat-header-cell *matHeaderCellDef mat-sort-header sortActionDescription="Sort by first name"> Prénom </mat-header-cell>
+            <mat-cell *matCellDef="let element">{{element.first_name}}</mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="last_name">
+            <mat-header-cell *matHeaderCellDef mat-sort-header sortActionDescription="Sort by name"> Nom </mat-header-cell>
+            <mat-cell *matCellDef="let element">{{element.last_name}}</mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="email">
+            <mat-header-cell *matHeaderCellDef mat-sort-header sortActionDescription="Sort by email"> Email </mat-header-cell>
+            <mat-cell *matCellDef="let element">{{element.email}}</mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="isAdmin">
+            <mat-header-cell *matHeaderCellDef mat-sort-header sortActionDescription="Sort by admin's rights"> Admin </mat-header-cell>
+            <mat-cell *matCellDef="let element">
+                <mat-icon *ngIf="element.isAdmin"
+                    aria-hidden="false"
+                    aria-label="admin"
+                    fontIcon="done">
+                </mat-icon>
+                <mat-icon *ngIf="!element.isAdmin"
+                    aria-hidden="false"
+                    aria-label="admin"
+                    fontIcon="close">
+                </mat-icon>
+            </mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="is_active">
+            <mat-header-cell *matHeaderCellDef mat-sort-header sortActionDescription="Sort by active account"> Actif </mat-header-cell>
+            <mat-cell *matCellDef="let element">
+                <mat-icon *ngIf="element.is_active"
+                    aria-hidden="false"
+                    aria-label="Admin"
+                    fontIcon="done">
+                </mat-icon>
+                <mat-icon *ngIf="!element.is_active"
+                    aria-hidden="false"
+                    aria-label="Not admin"
+                    fontIcon="close">
+                </mat-icon>
+            </mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="edit">
+            <mat-header-cell *matHeaderCellDef> Modifier </mat-header-cell>
+            <mat-cell *matCellDef="let element">
+            <a href=""
+                ><mat-icon
+                aria-hidden="false"
+                aria-label="Edit"
+                fontIcon="edit"
+                ></mat-icon></a
+            ></mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="password">
+            <mat-header-cell *matHeaderCellDef> Mot de Passe </mat-header-cell>
+            <mat-cell *matCellDef="let element">
+                <a href=""
+                ><mat-icon
+                aria-hidden="false"
+                aria-label="Reset password"
+                fontIcon="lock_reset"
+                ></mat-icon></a
+            >
+            </mat-cell>
+        </ng-container>
+
+        <mat-header-row *matHeaderRowDef="columnsToDisplay"></mat-header-row>
+        <mat-row *matRowDef="let rowData; columns: columnsToDisplay"
+        [ngClass]="!rowData.is_active ? 'disabledAccount' : ''"></mat-row>
+    </mat-table>
+
+    <mat-paginator
+    [length]="100"
+    [pageSize]="5"
+    [hidePageSize]="hidePageSize"
+    aria-label="Select page"
+    ></mat-paginator>
+</div>
+
+<mat-card-actions class="card-actions">
+    <button mat-raised-button type="button" color="onprimary">
+        <mat-icon
+            aria-hidden="true"
+            aria-label="add user"
+            fontIcon="person_add"
+            ></mat-icon>
+        <span>Nouvel utilisateur</span>
+    </button>
+  </mat-card-actions>

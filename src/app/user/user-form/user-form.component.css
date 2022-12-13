@@ -1,0 +1,22 @@
+.card {
+  margin: auto;
+}
+
+.row {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+
+.card-actions {
+  display: flex;
+  justify-content: center;
+}
+
+.userAccount .row {
+  width: 80vh;
+}
+
+.userAccount .card-actions{
+  display: none;
+}

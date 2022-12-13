@@ -1,0 +1,22 @@
+import { ComponentFixture, TestBed } from '@angular/core/testing';
+
+import { CompanyMainComponent } from './company-main.component';
+
+describe('CompanymainComponent', () => {
+  let component: CompanyMainComponent;
+  let fixture: ComponentFixture<CompanyMainComponent>;
+
+  beforeEach(async () => {
+    await TestBed.configureTestingModule({
+      declarations: [CompanyMainComponent],
+    }).compileComponents();
+
+    fixture = TestBed.createComponent(CompanyMainComponent);
+    component = fixture.componentInstance;
+    fixture.detectChanges();
+  });
+
+  it('should create', () => {
+    expect(component).toBeTruthy();
+  });
+});

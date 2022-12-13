@@ -1,0 +1,12 @@
+<mat-card class="company-card card">
+
+    <app-info-company [company]="companyData" ></app-info-company>
+    <app-manage-user *ngIf="ENTERPRISE" [user]="userData" [company]="companyData"></app-manage-user>
+    <!--  -->
+    <app-info-subscription [company]="companyData" [invoice]="invoiceData" ></app-info-subscription>
+
+</mat-card>
+
+<!-- bouton pour revenir sur la landing page -->
+<a routerLink="" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}" mat-raised-button style="margin-top: 2rem;">Retour à la page d'accueil</a>
+<!--  -->

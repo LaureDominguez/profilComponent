@@ -1,0 +1,60 @@
+<form [formGroup]="userForm" [ngClass]="popup ? 'userAccount' : ''">
+  <mat-card-header>
+    <mat-card-title>Infos utilisateurs</mat-card-title>
+  </mat-card-header>
+
+  <mat-card-content class="card-content">
+    <div class="row">
+      <div class="col">
+        <mat-form-field>
+          <mat-label for="first_name">Prénom</mat-label>
+          <input matInput formControlName="first_name" [readonly]="popup" />
+        </mat-form-field>
+      </div>
+      <div class="col">
+        <mat-form-field>
+          <mat-label for="last_name">Nom</mat-label>
+          <input matInput formControlName="last_name" [readonly]="popup" />
+        </mat-form-field>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col">
+        <mat-form-field>
+          <mat-label for="email">Email</mat-label>
+          <input matInput formControlName="email" [readonly]="popup"  />
+        </mat-form-field>
+      </div>
+      <div class="col">
+        <mat-form-field>
+          <mat-label for="phone">Téléphone</mat-label>
+          <input matInput formControlName="phone" [readonly]="popup" />
+        </mat-form-field>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col">
+        <mat-form-field>
+          <mat-label for="job">Poste</mat-label>
+          <mat-select formControlName="job" id="job"> </mat-select>
+          <mat-option >{{ userForm.value.job }}</mat-option>
+        </mat-form-field>
+      </div>
+      <div class="col">
+        <mat-form-field>
+          <mat-label for="language">Langue</mat-label>
+          <mat-select formControlName="language" id="language"> </mat-select>
+          <mat-option >{{ userForm.value.language}}</mat-option>
+        </mat-form-field>
+      </div>
+    </div>
+
+    <mat-card-actions class="card-actions">
+      <button mat-raised-button color="primary" (click)="sendData()">Valider</button>
+      <button mat-raised-button mat-dialog-close color="onprimary">Abandonner</button>
+    </mat-card-actions>
+
+  </mat-card-content>
+</form>

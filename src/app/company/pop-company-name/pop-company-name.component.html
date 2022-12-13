@@ -1,0 +1,17 @@
+<h1 mat-dialog-title>Modifier le nom de l'entreprise</h1>
+
+<form [formGroup]="companyForm">
+  <mat-dialog-content class="dialog-content">
+    <mat-form-field appearance="fill">
+      <mat-label>Nom</mat-label>
+      <input matInput formControlName="name" />
+    </mat-form-field>
+
+    <mat-dialog-actions class="dialog-actions">
+      <button mat-raised-button color="primary" [mat-dialog-close]="this.companyForm.value.name">
+        Valider
+      </button>
+      <button mat-raised-button color="onprimary" mat-dialog-close >Abandonner</button>
+    </mat-dialog-actions>
+  </mat-dialog-content>
+</form>

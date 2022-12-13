@@ -1,0 +1,32 @@
+.card-actions{
+    display: flex;
+    justify-content: space-around;
+    align-content: center;
+    align-items: center;
+}
+
+/* décoller les mat-dividers */
+mat-divider {
+    margin-top: 2rem;
+    margin-bottom: 1rem;
+}
+
+/* badge */
+
+span:hover, mat-icon:hover{
+    cursor: pointer;
+}
+
+#mat-badge-content-0{
+    padding: 0.3rem;
+    margin-right: -1rem;
+}
+
+.mat-badge{
+    margin-right: 2rem;
+}
+
+/* starter */
+.hideComponent{
+    display: none;
+}

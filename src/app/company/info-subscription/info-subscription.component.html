@@ -1,0 +1,139 @@
+<mat-divider></mat-divider>
+
+<mat-card-header>
+  <mat-card-title>Gérer votre abonnement</mat-card-title>
+</mat-card-header>
+<mat-card-content>
+  <div class="flex-space-between">
+    <p>
+      Inscrit depuis le :
+      {{ company?.date_subscribed | date : "dd/MM/yyyy" }}
+    </p>
+
+    <!-- if !starter -->
+    <p class="flex"
+      [ngClass]="company?.account_type === 'STARTER' ? 'hideComponent' : ''"
+    > Validité : {{ company?.date_subscribed | date : "dd/MM/yyyy" }}
+      <mat-icon
+        aria-hidden="false"
+        aria-label="info icon"
+        fontIcon="info"
+        matTooltip="Votre abonnement se renouvellera automatiquement le {{ company?.date_subscribed | date : 'dd/MM/yyyy' }}"
+        matTooltipPosition="above"
+      ></mat-icon>
+    </p>
+    <!-- end if !starter -->
+
+    <mat-card-actions class="card-actions">
+      <button mat-raised-button type="button" color="onprimary">Résilier</button>
+    </mat-card-actions>
+
+    <!-- if starter -->
+    <span
+      [ngClass]="company?.account_type !== 'STARTER' ? 'hideComponent' : ''"
+      *ngIf="company?.bimcoins_quantity"
+      matBadge="{{ company?.bimcoins_quantity }}"
+      matBadgeOverlap="false"
+      matTooltip="Vous disposez de {{
+        company?.bimcoins_quantity
+      }} jetons gratuits pour tester l'application"
+      matTooltipPosition="above"
+    > Jetons disponibles
+    </span>
+    <!-- end if starter -->
+  </div>
+
+  <mat-card-actions class="card-actions">
+    <button mat-raised-button type="button" color="primary">
+      Accéder à Stripe
+    </button>
+  </mat-card-actions>
+
+  <!-- if starter -->
+  <div [ngClass]="company?.account_type !== 'STARTER' ? 'hideComponent' : ''">
+    <p>Liste des factures :</p>
+
+    <div class="mat-elevation-z8">
+      <mat-table [dataSource]="dataSource" matSort (matSortChange)="announceSortChange($event)">
+        <ng-container matColumnDef="created">
+          <mat-header-cell *matHeaderCellDef  mat-sort-header sortActionDescription="Sort by date"> Date </mat-header-cell>
+          <mat-cell *matCellDef="let element">{{
+            element.created | date : "dd/MM/yyyy"
+          }}</mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="bimcoins_quantity">
+          <mat-header-cell *matHeaderCellDef> Jetons </mat-header-cell>
+          <mat-cell *matCellDef="let element">{{
+            element.bimcoins_quantity
+          }}</mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="hosted_invoice_url">
+          <mat-header-cell *matHeaderCellDef> Facture </mat-header-cell>
+          <mat-cell *matCellDef="let element">
+            <a href="{{ element.hosted_invoice_url }}"
+              ><mat-icon
+                aria-hidden="false"
+                aria-label="Example home icon"
+                fontIcon="receipt_long"
+                matTooltip="Facture n° {{ element.id }} "
+                matTooltipPosition="right"
+              ></mat-icon></a
+          ></mat-cell>
+        </ng-container>
+
+        <mat-header-row *matHeaderRowDef="columnsToDisplay"></mat-header-row>
+        <mat-row *matRowDef="let rowData; columns: columnsToDisplay"></mat-row>
+      </mat-table>
+
+      <mat-paginator
+        [length]="100"
+        [pageSize]="5"
+        [pageSizeOptions]="[5, 10, 25, 50]"
+        aria-label="Select page"
+      ></mat-paginator>
+    </div>
+  </div>
+  <!-- end if starter -->
+
+</mat-card-content>
+
+<!-- offres -->
+<div [ngClass]="company?.account_type === 'ENTERPRISE' ? 'hideComponent' : ''">
+  <mat-divider></mat-divider>
+
+  <mat-card-header>
+    <mat-card-title>Vous souhaitez évoluer ?</mat-card-title>
+  </mat-card-header>
+
+  <mat-card-actions class="card-actions">
+    <button mat-raised-button type="button" color="primary">
+      Comparer les offres
+    </button>
+  </mat-card-actions>
+
+  <mat-card-actions class="card-actions">
+    <button
+      mat-raised-button
+      type="button"
+      color="onprimary"
+      [ngClass]="company?.account_type !== 'STARTER' ? 'hideComponent' : ''"
+    > Pro essential </button>
+
+    <button
+      mat-raised-button
+      type="button"
+      color="onprimary"
+      [ngClass]="
+        company?.account_type === 'PRO-U' ? 'hideComponent' : '' "
+    >Pro ultimate </button>
+
+    <button
+      mat-raised-button
+      type="button"
+      color="onprimary"
+      > Entreprise </button>
+
+  </mat-card-actions>
+</div>

@@ -1,0 +1,25 @@
+<form [formGroup]="companyForm">
+  <mat-card-header>
+    <mat-card-title>Compte : {{company?.account_type}} </mat-card-title>
+  </mat-card-header>
+
+  <mat-card-content class="card-content">
+    <mat-form-field>
+      <mat-label for="name">Nom</mat-label>
+      <input matInput formControlName="name"/>
+    </mat-form-field>
+
+    <button mat-icon-button matTooltip="Modifier le nom" color="primary" aria-label="Modifier le nom" (click)="openCompanyNameDialog()">
+      <mat-icon>edit</mat-icon>
+    </button>
+  </mat-card-content>
+</form>
+
+<div class="col">
+  <div class="stockage">
+    <mat-label for="display_storage">Stockage : </mat-label>
+    <mat-label>{{displayStorage}}% </mat-label>
+    <mat-label>{{totalStorage}} Go</mat-label>
+  </div>
+  <mat-progress-bar mode="determinate" value="{{displayStorage}}" color="{{loadingColor}}"></mat-progress-bar>
+</div>

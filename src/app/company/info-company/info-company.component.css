@@ -1,0 +1,14 @@
+/* barre de stockage plus large */
+.mat-progress-bar{
+    height: 20px;
+    border-radius: 5px;
+}
+
+mat-card-header {
+    justify-content: center;
+}
+
+.stockage{
+    display: flex;
+    justify-content: space-between;
+}

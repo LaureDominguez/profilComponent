@@ -1,0 +1,90 @@
+/* style de l'exemple pour Mat Sidenav */
+
+.example-container {
+  width: 500px;
+  height: 300px;
+  border: 1px solid rgba(0, 0, 0, 0.5);
+  margin: auto;
+}
+
+.example-sidenav-content {
+  display: flex;
+  height: 100%;
+  align-items: center;
+  justify-content: center;
+}
+
+.example-sidenav {
+  padding: 20px;
+}
+
+
+/* ************************************* */
+/* style de Laure */
+
+h1 {
+    text-align: center;
+    color: white;
+}
+
+ul{
+    text-decoration: none;
+    padding-left: 0;
+    margin: 0;
+}
+
+li{
+    padding-bottom: 1rem ;
+}
+
+/* ************************************** */
+/* snow */
+
+.landing-page{
+  padding: 0;
+  margin: 0;
+  width: 100vw;
+  height: 100%;
+  position: relative;
+  overflow: hidden;
+  position: fixed;
+  left: 0;
+  top: 0;
+  background: linear-gradient(#123, #111);
+}
+
+.snowflake {
+  --size: 1vw;
+  width: var(--size);
+  height: var(--size);
+  background: white;
+  border-radius: 50%;
+  position: absolute;
+  top: -5vh;
+}
+
+@keyframes snowfall {
+  0% {
+    transform: translate3d(var(--left-ini), 0, 0);
+  }
+  100% {
+    transform: translate3d(var(--left-end), 110vh, 0);
+  }
+}
+
+@for $i from 1 through 50 {
+  .snowflake:nth-child(#{$i}) {
+    --size: #{random(5) * 0.2}vw;
+    --left-ini: #{random(20) - 10}vw;
+    --left-end: #{random(20) - 10}vw;
+    left: #{random(100)}vw;
+    animation: snowfall #{5 + random(10)}s linear infinite;
+    animation-delay: -#{random(10)}s;
+  }
+}
+
+/* added small blur every 6 snowflakes*/
+.snowflake:nth-child(6n) {
+  filter: blur(1px);
+}
+

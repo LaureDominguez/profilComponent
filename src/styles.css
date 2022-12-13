@@ -1,0 +1,22 @@
+/* You can add global styles to this file, and also import other style files */
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif;}
+
+
+/* Ajout de la classe sur le body des pages de log */
+.center-page {
+    display: flex;
+    justify-content: center;
+  }
+
+  .flex-space-between{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.flex{
+    display: flex;
+    align-items: center;
+}

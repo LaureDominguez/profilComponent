@@ -1,0 +1,26 @@
+/* décoller les mat-dividers */
+mat-divider {
+    margin-top: 2rem;
+    margin-bottom: 1rem;
+}
+
+/* loadingbar*/
+.mat-progress-bar{
+    height: 20px;
+    border-radius: 5px;
+}
+
+.loadingbar{
+    margin-bottom: 1rem ;
+}
+
+
+/* tableau */
+.disabledAccount{
+    background-color: rgb(200, 200, 200);
+}
+
+/* bouton adduser */
+button mat-icon{
+    margin-right: 0.5rem;
+}
